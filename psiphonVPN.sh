@@ -29,6 +29,10 @@
 # - add check new version psiphon
 # - code optimization
 
+# v1.2
+# - a directory is installed in which permanent files will be stored, in the same place as the program itself
+# - add improving the reliability of obfuscation (-obfs4-distBias)
+
 ## Add alias to file .bashrc
 # echo "alias psiphon='./psiphonVPN.sh'" >> ~/.bashrc
 # source ~/.bashrc
@@ -48,7 +52,7 @@ readonly psiphon_dir="$HOME/PsiphonVPN"
 readonly psiphon_file="$psiphon_dir/psiphon-tunnel-core-x86_64"
 readonly psiphon_config="$psiphon_dir/config.json"
 readonly psiphon_log="$psiphon_dir/psiphon-tunnel.log"
-readonly script_version="1.1"
+readonly script_version="1.2"
 readonly psiphon_url="https://github.com/Psiphon-Labs/psiphon-tunnel-core-binaries/raw/master/linux/psiphon-tunnel-core-x86_64"
 readonly psiphon_url_commit="https://api.github.com/repos/Psiphon-Labs/psiphon-tunnel-core-binaries/commits"
 readonly level_msg=("$ERROR" "$WARNING" "$INFO" "$HELP")
@@ -144,7 +148,7 @@ EOF
 function run_psiphon(){
         echo
         echo -e "${level_msg[2]}""Run $psiphon_name." 2>"$psiphon_log"
-        "$psiphon_file" -config "$psiphon_config" 2>>"$psiphon_log"
+        "$psiphon_file" -formatNotices -obfs4-distBias -dataRootDirectory "$psiphon_dir" -config "$psiphon_config" 2>>"$psiphon_log"
 }
 
 function install_psiphon(){
