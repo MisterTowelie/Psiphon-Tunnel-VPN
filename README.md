@@ -37,6 +37,11 @@ curl -O https://raw.githubusercontent.com/MisterTowelie/Psiphon-Tunnel-VPN/main/
 ./psiphonVPN.sh start
 ```
 
+## Stop the program (process)
+```sh
+./psiphonVPN.sh stop
+```
+
 ## Removing
 ```sh
 ./psiphonVPN.sh uninstall
